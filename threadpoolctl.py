@@ -218,6 +218,14 @@ def threadpool_info():
     return infos
 
 
+def _set_num_threads_funcs():
+    funcs = []
+    modules = _load_modules(user_api=_ALL_USER_APIS)
+    for module in modules:
+        funcs.append(module['set_num_threads'])
+    return funcs
+
+
 def _get_version(dynlib, internal_api):
     if internal_api == "mkl":
         return _get_mkl_version(dynlib)

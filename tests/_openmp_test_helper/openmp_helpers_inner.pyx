@@ -1,5 +1,10 @@
+import ctypes
+
 cimport openmp
 from cython.parallel import prange
+from libc.stdlib cimport realloc
+
+from threadpoolctl import _set_num_threads_funcs
 
 
 def check_openmp_num_threads(int n):
@@ -36,6 +41,28 @@ cdef int inner_openmp_loop(int n) nogil:
         return -1
 
     return num_threads
+
+
+cdef int get_set_num_threads_funcs(threadpool_func* funcs):
+    funcs_from_tpctl = _set_num_threads_funcs()
+
+    cdef int n = len(funcs_from_tpctl)
+
+    funcs = <threadpool_func*> realloc(funcs, n * sizeof(threadpool_func))
+
+    cdef int i
+
+    for i in range(n):
+        funcs[i] = (<threadpool_func*><size_t>ctypes.addressof(funcs_from_tpctl[i]))[0]
+
+    return n
+
+
+cdef void set_num_threads(threadpool_func *funcs, int n_funcs, int n_threads) nogil:
+    cdef int i
+
+    for i in range(n_funcs):
+        funcs[i](n_threads)
 
 
 def get_compiler():
