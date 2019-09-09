@@ -34,7 +34,7 @@ make_conda() {
     source activate $VIRTUALENV
     if [[ "$INSTALL_LIBOMP" == "conda-forge" ]]; then
         # Install an OpenMP-enabled clang/llvm from conda-forge
-        conda instlal conda-forge::compilers conda-forge::llvm-openmp
+        conda install conda-forge::compilers conda-forge::llvm-openmp
         export LDFLAGS="$LDFLAGS -Wl,-rpath=$HOME/.conda/envs/$VIRTUALENV/lib -L$HOME/.conda/envs/$VIRTUALENV/lib"
         export CFLAGS="$CFLAGS -I$HOME/.conda/envs/$VIRTUALENV/include"
     fi
