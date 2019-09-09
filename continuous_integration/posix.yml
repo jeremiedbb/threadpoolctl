@@ -12,14 +12,14 @@ jobs:
       ${{ insert }}: ${{ parameters.matrix }}
 
   steps:
+    - bash: echo "##vso[task.prependpath]$CONDA/bin"
+      displayName: Add conda to PATH
+      condition: or(eq(variables['PACKAGER'], 'conda'), eq(variables['PACKAGER'], 'pip'))
     - script: |
         ls $HOME/.conda
         sudo chmod -R 777 $HOME/.conda/pkgs
       displayName: 'Fix for conda error on macOS'
       condition: eq('${{ parameters.name }}', 'macOS')
-    - bash: echo "##vso[task.prependpath]$CONDA/bin"
-      displayName: Add conda to PATH
-      condition: or(eq(variables['PACKAGER'], 'conda'), eq(variables['PACKAGER'], 'pip'))
     - script: |
         continuous_integration/install.sh
       displayName: 'Install'
