@@ -13,7 +13,7 @@ jobs:
 
   steps:
     - script: |
-      sudo chmod -R 777 $HOME/.conda/
+        sudo chmod -R 777 $HOME/.conda/
       displayName: 'Fix for conda error on macOS'
     - bash: echo "##vso[task.prependpath]$CONDA/bin"
       displayName: Add conda to PATH
