@@ -35,11 +35,6 @@ make_conda() {
         TO_INSTALL="$TO_INSTALL conda-forge::compilers"
         export LDFLAGS="$LDFLAGS -Wl,-rpath=$HOME/.conda/envs/$VIRTUALENV/lib"
         export CFLAGS="$CFLAGS -I$HOME/.conda/envs/$VIRTUALENV/include"
-
-        echo '###################################################'
-        find $HOME -name 'libomp*'
-        find $HOME -name 'omp.h'
-        echo '###################################################'
     fi
     conda create -n $VIRTUALENV -q --yes $TO_INSTALL
     source activate $VIRTUALENV
@@ -54,6 +49,10 @@ if [[ "$PACKAGER" == "conda" ]]; then
         fi
     fi
 	make_conda $TO_INSTALL
+    echo '###################################################'
+    find $HOME -name 'libomp*'
+    find $HOME -name 'omp.h'
+    echo '###################################################'
 
 elif [[ "$PACKAGER" == "pip" ]]; then
     # Use conda to build an empty python env and then use pip to install
