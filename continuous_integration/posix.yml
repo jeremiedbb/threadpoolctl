@@ -13,6 +13,7 @@ jobs:
 
   steps:
     - script: |
+        ls $HOME/.conda
         sudo chmod -R 777 $HOME/.conda/pkgs
       displayName: 'Fix for conda error on macOS'
       condition: eq('${{ parameters.name }}', 'macOS')
