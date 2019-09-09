@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -xe
+set -e
 
 UNAMESTR=`uname`
 
