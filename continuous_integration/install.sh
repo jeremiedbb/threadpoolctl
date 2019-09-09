@@ -37,7 +37,9 @@ make_conda() {
         export CFLAGS="$CFLAGS -I$HOME/.conda/envs/$VIRTUALENV/include"
     fi
     if [[ "$UNAMESTR" == "Darwin" ]]; then
-        sudo chown 501:20 $HOME/.conda/pkgs/urls.txt 
+        if [[ -f "$HOME/.conda/pkgs/urls.txt" ]]; then
+            sudo chown 501:20 $HOME/.conda/pkgs/urls.txt
+        fi
     fi
     conda create -n $VIRTUALENV -q --yes $TO_INSTALL
     source activate $VIRTUALENV
