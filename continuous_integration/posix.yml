@@ -12,6 +12,9 @@ jobs:
       ${{ insert }}: ${{ parameters.matrix }}
 
   steps:
+    - script: |
+      sudo chmod -R 777 $HOME/.conda/
+      displayName: 'Fix for conda error on macOS'
     - bash: echo "##vso[task.prependpath]$CONDA/bin"
       displayName: Add conda to PATH
       condition: or(eq(variables['PACKAGER'], 'conda'), eq(variables['PACKAGER'], 'pip'))
