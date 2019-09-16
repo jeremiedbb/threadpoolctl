@@ -2,7 +2,8 @@
 
 set -e
 
-ls /usr
+find /usr/lib -name 'libopenblas*'
+find /usr/lib -name 'libatlas*'
 
 UNAMESTR=`uname`
 
