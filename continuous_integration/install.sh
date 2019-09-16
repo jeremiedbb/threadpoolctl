@@ -2,6 +2,9 @@
 
 set -e
 
+ls /usr/lib/libopenblas*
+ls /usr/lib/libatlas*
+
 UNAMESTR=`uname`
 
 if [[ "$CC_OUTER_LOOP" == "clang-8" || "$CC_INNER_LOOP" == "clang-8" ]]; then
