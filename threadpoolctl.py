@@ -345,7 +345,7 @@ def _make_module_info(filepath, module_info, prefix):
 
 def _get_module_info_from_path(filepath, prefixes, user_api, modules):
     # Required to resolve symlinks
-    filepath =_realpath(filepath)
+    # filepath =_realpath(filepath)
     # `lower` required to take account of OpenMP dll case on Windows
     # (vcomp, VCOMP, Vcomp, ...)
     filename = os.path.basename(filepath).lower()
