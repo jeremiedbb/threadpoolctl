@@ -2,8 +2,12 @@
 
 set -e
 
+echo "############################################################"
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 find /usr/lib -name 'libopenblas*'
 find /usr/lib -name 'libatlas*'
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "############################################################"
 
 UNAMESTR=`uname`
 
@@ -73,6 +77,13 @@ elif [[ "$PACKAGER" == "ubuntu" ]]; then
     python3 -m virtualenv --system-site-packages --python=python3 $VIRTUALENV
     source $VIRTUALENV/bin/activate
 fi
+
+echo "############################################################"
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+find /usr/lib -name 'libopenblas*'
+find /usr/lib -name 'libatlas*'
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "############################################################"
 
 
 python -m pip install -q -r dev-requirements.txt
