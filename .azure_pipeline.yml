@@ -44,6 +44,12 @@ jobs:
         VERSION_PYTHON: '3.5'
         CC_OUTER_LOOP: 'gcc'
         CC_INNER_LOOP: 'gcc'
+      py35_ubuntu_openblas_alternative_gcc_gcc:
+        PACKAGER: 'ubuntu'
+        APT_BLAS: 'libopenblas-base libopenblas-dev libatlas3-base libatlas-base-dev libatlas-dev'
+        VERSION_PYTHON: '3.5'
+        CC_OUTER_LOOP: 'gcc'
+        CC_INNER_LOOP: 'gcc'
       # Linux + Python 3.6 and homogeneous runtime nesting.
       py36_conda_openblas_clang_clang:
         PACKAGER: 'conda'
