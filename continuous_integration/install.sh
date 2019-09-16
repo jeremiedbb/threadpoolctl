@@ -2,8 +2,7 @@
 
 set -e
 
-ls /usr/lib/libopenblas*
-ls /usr/lib/libatlas*
+ls /usr
 
 UNAMESTR=`uname`
 
