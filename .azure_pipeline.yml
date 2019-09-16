@@ -46,7 +46,8 @@ jobs:
         CC_INNER_LOOP: 'gcc'
       py35_ubuntu_openblas_alternative_gcc_gcc:
         PACKAGER: 'ubuntu'
-        APT_BLAS: 'libopenblas-base libopenblas-dev libatlas3-base libatlas-base-dev libatlas-dev'
+        APT_BLAS: 'libatlas3-base libatlas-base-dev libatlas-dev'
+        APT_BLAS2: 'libopenblas-base libopenblas-dev'
         VERSION_PYTHON: '3.5'
         CC_OUTER_LOOP: 'gcc'
         CC_INNER_LOOP: 'gcc'

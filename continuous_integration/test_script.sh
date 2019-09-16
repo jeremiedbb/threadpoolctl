@@ -9,6 +9,14 @@ elif [[ "$PACKAGER" == "pip" ]]; then
     source activate $VIRTUALENV
 elif [[ "$PACKAGER" == "ubuntu" ]]; then
     source $VIRTUALENV/bin/activate
+    PYTHONPATH="." python continuous_integration/display_versions.py
+
+    if [[ ! -z $APT_BLAS2 ]]; then
+        sudo apt-get install $APT_BLAS2
+    fi
+
+    PYTHONPATH="." python continuous_integration/display_versions.py
+
 fi
 
 set -x
