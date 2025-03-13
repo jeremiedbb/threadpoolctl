@@ -8,6 +8,8 @@ Fine control of the underlying thread-pool size can be useful in
 workloads that involve nested parallelism so as to mitigate
 oversubscription issues.
 
+## TEST
+
 ## Installation
 
 - For users, install the last published version from PyPI:
